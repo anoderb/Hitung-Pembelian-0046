@@ -1,4 +1,4 @@
-# Perhitungan Diskon Sederhana dengan PHP dan Tailwind CSS
+# Perhitungan Diskon Sederhana dengan PHP
 
 NIM : 23.240.0046  
 Nama : Khamdanu Syakir
@@ -12,3 +12,12 @@ Nama : Khamdanu Syakir
 2. **Perhitungan Diskon untuk Non-Member:**
    - Non-member hanya mendapatkan diskon sebesar 10% jika total belanja lebih dari atau sama dengan Rp 500.000.
    - Non-member dengan total belanja kurang dari Rp 500.000 tidak mendapatkan diskon.
+
+
+Penamaan variabel:
+
+total_belanja → tb
+diskon → disc
+potongan_harga → ph
+total_akhir → ta
+
