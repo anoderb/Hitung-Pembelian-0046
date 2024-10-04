@@ -14,54 +14,63 @@
             
             <form method="post" class="space-y-4">
                 <div>
-                    <label for="total_belanja" class="block text-sm font-medium text-gray-700">Total Belanja:</label>
-                    <input type="number" name="total_belanja" id="total_belanja" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                    <label for="tb_0046" class="block text-sm font-medium text-gray-700">Total Belanja:</label>
+                    <input type="number" name="tb_0046" id="tb_0046" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
                 </div>
 
                 <div>
-                    <label for="member" class="block text-sm font-medium text-gray-700">Apakah Anda Member?</label>
-                    <select name="member" id="member" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                    <label for="member_0046" class="block text-sm font-medium text-gray-700">Apakah Anda Member?</label>
+                    <select name="member_0046" id="member_0046" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
                         <option value="ya">Ya</option>
                         <option value="tidak">Tidak</option>
                     </select>
                 </div>
 
                 <div>
-                    <button type="submit" name="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
+                    <button type="submit" name="submit_0046" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
                         Hitung
                     </button>
                 </div>
             </form>
+            
+                <!-- 
+                Penamaan variabel:
+
+                total_belanja → tb
+                diskon → disc
+                potongan_harga → ph
+                total_akhir → ta 
+                -->
 
             <?php
-            if (isset($_POST['submit'])) {
-                $total_belanja = isset($_POST['total_belanja']) ? $_POST['total_belanja'] : 0;
-                $member = isset($_POST['member']) ? $_POST['member'] : 'tidak';
-                $diskon = 0;
+            if (isset($_POST['submit_0046'])) {
+                $tb_0046 = isset($_POST['tb_0046']) ? $_POST['tb_0046'] : 0;
+                $member_0046 = isset($_POST['member_0046']) ? $_POST['member_0046'] : 'tidak';
+                $disc_0046 = 0;
 
-                if ($member == "ya") {
-                    $diskon += 0.10;
-                    if ($total_belanja >= 500000) {
-                        $diskon += 0.05;
+                if ($member_0046 == "ya") {
+                    $disc_0046 += 10;  
+                    if ($tb_0046 >= 500000) {
+                        $disc_0046 += 5;   
                     }
-                    if ($total_belanja >= 300000) {
-                        $diskon += 0.05;
+                    if ($tb_0046 >= 300000) {
+                        $disc_0046 += 5;  
                     }
                 } else {
-                    if ($total_belanja >= 500000) {
-                        $diskon = 0.10;
+                    if ($tb_0046 >= 500000) {
+                        $disc_0046 = 10;   
                     }
                 }
 
-                $potongan_harga = $total_belanja * $diskon;
-                $total_akhir = $total_belanja - $potongan_harga;
+                $ph_0046 = $tb_0046 * ($disc_0046 / 100);  
+                $ta_0046 = $tb_0046 - $ph_0046;            
 
                 echo "<div class='mt-6 bg-green-100 border border-green-400 text-green-700 p-4 rounded'>";
                 echo "<h3 class='text-lg font-bold mb-2'>Hasil Perhitungan:</h3>";
-                echo "<p>Total Belanja: <strong>Rp " . number_format($total_belanja, 0, ',', '.') . "</strong></p>";
-                echo "<p>Diskon: <strong>" . ($diskon * 100) . "%</strong></p>";
-                echo "<p>Potongan Harga: <strong>Rp " . number_format($potongan_harga, 0, ',', '.') . "</strong></p>";
-                echo "<p>Total Akhir: <strong>Rp " . number_format($total_akhir, 0, ',', '.') . "</strong></p>";
+                echo "<p>Total Belanja: <strong>Rp " . number_format($tb_0046, 0, ',', '.') . "</strong></p>";
+                echo "<p>Diskon: <strong>" . $disc_0046 . "%</strong></p>";
+                echo "<p>Potongan Harga: <strong>Rp " . number_format($ph_0046, 0, ',', '.') . "</strong></p>";
+                echo "<p>Total Akhir: <strong>Rp " . number_format($ta_0046, 0, ',', '.') . "</strong></p>";
                 echo "</div>";
             }
             ?>

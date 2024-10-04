@@ -14,10 +14,13 @@ Nama : Khamdanu Syakir
    - Non-member dengan total belanja kurang dari Rp 500.000 tidak mendapatkan diskon.
 
 
-Penamaan variabel:
+### Penamaan variabel:
 
-total_belanja → tb
-diskon → disc
-potongan_harga → ph
-total_akhir → ta
+total_belanja → tb  
+diskon → disc  
+potongan_harga → ph  
+total_akhir → ta  
+
+### Preview
+https://t1.anoderb.space/
 
